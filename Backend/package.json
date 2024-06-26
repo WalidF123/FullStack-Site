@@ -1,0 +1,28 @@
+{
+  "name": "s4011455-s3972717-a2",
+  "version": "1.0.0",
+  "description": "Node.js Rest Apis with Express, Sequelize & MySQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sequelize",
+    "mysql",
+    "rest",
+    "api"
+  ],
+  "author": "walid feki",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.40.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "graphql": "^16.8.1",
+    "mysql2": "^3.9.7",
+    "sequelize": "^6.37.3"
+  }
+}

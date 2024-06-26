@@ -1,0 +1,303 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+@keyframes slidein-right {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+.slide-in {  
+  animation: 3s slidein-right;
+  text-align: left;
+  position:relative;
+  top:50px;
+}
+@keyframes jump {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-20px);
+  }
+  60% {
+      transform: translateY(-10px);
+  }
+}
+.jumping-text {
+  animation: jump 3s;
+  display: inline-block;
+  transform-origin: center bottom;
+}
+
+.jumping-text:nth-child(2) {
+  animation-delay: 0.4s; 
+}
+
+.jumping-text:nth-child(3) {
+  animation-delay: 0.8s; 
+}
+
+.jumping-text:nth-child(4) {
+  animation-delay: 1.2s; 
+}
+.header-container {
+  background-color: #87A96B;
+  padding: 20px;
+}
+.header-title{
+  font-size: 32px;
+  margin: 0; 
+}
+.header-description {
+  font-size: 20px; 
+  color: white;
+  margin: 0; 
+  text-align: center;
+}
+.align-left {
+  text-align:left;
+}
+.small-scale-farming-container {
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.small-scale-farming-heading {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.small-scale-farming-text {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.small-scale-farming-list {
+  margin-bottom: 15px;
+}
+
+.small-scale-farming-list li {
+  margin-bottom: 8px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.subscription-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-top: 2px solid #ccc;
+}
+
+.subscription-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+
+/*CSS STYLING FOR THE MEALS*/
+.meal-option-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meal-image-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.meal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meal-label {
+  text-align: center;
+}
+
+.meal-name {
+  font-size: 14px;
+}
+
+
+/*Meal summary*/
+.summary-container {
+  margin-top: 20px;
+}
+
+.meal-summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meal-summary-item {
+  flex-basis: 30%;
+}
+
+.meal-summary-content {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.meal-summary-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; 
+  object-fit: cover;
+}
+
+.meal-summary-item h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.meal-summary-item span {
+  display: block;
+  margin-top: 5px;
+}
+.special-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px; 
+}
+
+.standard-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px; 
+}
+.product-card {
+  display: inline-block;
+  margin: 30px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border: 2px solid #87A96B;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img{
+  width:300px;
+  height:250px;
+  border: 6px solid #87A96B;
+}
+.product-card button {
+  width:300px;
+}
+.cart-summary {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cart-summary h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: left;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.item-name {
+    font-size: 18px;
+    color: #555;
+    flex: 1;
+}
+
+.item-quantity {
+    font-size: 16px;
+    color: #777;
+    margin-left: 20px;
+}
+
+.empty-cart {
+    font-size: 18px;
+    color: #999;
+    margin-top: 20px;
+}
