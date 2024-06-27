@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from "react";
+
+
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.jpeg";
-import { fetchUserFromBackend } from "../data/repo";
- 
-function Navbar(props) {
-  const [user, setUser] = useState(null);
- 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const userId = localStorage.getItem("user_id"); // Assume you store user ID in local storage
-      if (userId) {
-        try {
-          const userData = await fetchUserFromBackend(userId);
-          setUser(userData);
-        } catch (error) {
-          console.error("Failed to fetch user data:", error);
-        }
-      }
-    };
- 
-    fetchUserData();
-  }, []);
- 
+
+function Navbar({ user, logoutUser }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light transparent-bg" style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' }}>
       <div className="container">
@@ -41,7 +24,7 @@ function Navbar(props) {
             <li className="nav-item">
               <Link className="nav-link" to="/products" style={{ color: 'black' }}>Products</Link>
             </li>
-            {user !== null &&
+            {user &&
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/profile" style={{ color: 'black' }}>My Profile</Link>
@@ -50,13 +33,13 @@ function Navbar(props) {
                   <Link className="nav-link" to="/orderhistory" style={{ color: 'black' }}>Order History</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={`/reviews`} style={{ color: 'black' }}>Reviews</Link> {/* Update this as per your dynamic context */}
+                  <Link className="nav-link" to="/reviews" style={{ color: 'black' }}>Reviews</Link>
                 </li>
               </>
             }
           </ul>
           <ul className="navbar-nav">
-            {user === null ?
+            {!user ?
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/signup">Sign Up</Link>
@@ -68,10 +51,10 @@ function Navbar(props) {
               :
               <>
                 <li className="nav-item">
-                  <span className="nav-link text-dark">Welcome, {user.firstname}</span>
+                  <span className="nav-link text-dark">Welcome, {user.first_name}</span>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login" onClick={props.logoutUser}>Logout</Link>
+                  <Link className="nav-link" to="/" onClick={logoutUser}>Logout</Link>
                 </li>
               </>
             }
@@ -81,5 +64,5 @@ function Navbar(props) {
     </nav>
   );
 }
- 
+
 export default Navbar;

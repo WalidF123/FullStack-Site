@@ -20,7 +20,19 @@ async function deleteUser(id) {
   return response.data;
 }
 
-
+export async function checkEmailUnique(email) {
+  try {
+    const response = await fetch(`/api/users/check-email?email=${email}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const result = await response.json();
+    return result.isUnique;
+  } catch (error) {
+    console.error('Error checking email uniqueness:', error);
+    return false; // Return false if there was an error
+  }
+}
 async function findUser(id) {
   const response = await axios.get(API_HOST + `/api/users/select/${id}`);
 

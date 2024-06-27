@@ -1,15 +1,16 @@
 
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { createUser, findUser, setUser } from "../data/repo";
+import { checkEmailUnique, createUser, setUser } from "../data/repo";
 
-export default function SignUp(props) {
+export default function SignUp({ loginUser }) {
   const navigate = useNavigate();
   const [fields, setFields] = useState({
     username: "", email: "", firstname: "", lastname: "", password: "", confirmPassword: "", DateOfBirth: "", isBlocked: false
   });
-  const [errors, setErrors] = useState({ });
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -23,12 +24,12 @@ export default function SignUp(props) {
     event.preventDefault();
 
     const { isValid } = await handleValidation();
-    if(!isValid) return;
+    if (!isValid) return;
 
     const user = await createUser(fields);
 
     setUser(user);
-    props.loginUser(user);
+    loginUser(user);
 
     navigate("/");
   };
@@ -39,43 +40,41 @@ export default function SignUp(props) {
   };
 
   const handleValidation = async () => {
-    const currentErrors = { };
+    const currentErrors = {};
 
     let key = "username";
     let field = fields[key];
-    if(field.length === 0)
+    if (field.length === 0)
       currentErrors[key] = "Username is required.";
-    else if(field.length > 32)
+    else if (field.length > 32)
       currentErrors[key] = "Username length cannot be greater than 32.";
-    else if(await findUser(fields.username) !== null)
-      currentErrors[key] = "Username is already registered.";
 
     key = "firstname";
     field = fields[key];
-    if(field.length === 0)
+    if (field.length === 0)
       currentErrors[key] = "First name is required.";
-    else if(field.length > 40)
+    else if (field.length > 40)
       currentErrors[key] = "First name length cannot be greater than 40.";
 
     key = "lastname";
     field = fields[key];
-    if(field.length === 0)
+    if (field.length === 0)
       currentErrors[key] = "Last name is required.";
-    else if(field.length > 40)
+    else if (field.length > 40)
       currentErrors[key] = "Last name length cannot be greater than 40.";
 
     key = "password";
     field = fields[key];
-    if(field.length === 0)
+    if (field.length === 0)
       currentErrors[key] = "Password is required.";
-    else if(field.length < 6)
+    else if (field.length < 6)
       currentErrors[key] = "Password must contain at least 6 characters.";
     else if (!isStrongPassword(field))
-      currentErrors[key] = "Please Use A Strong Password"
+      currentErrors[key] = "Please use a strong password";
 
     key = "confirmPassword";
     field = fields[key];
-    if(field !== fields.password)
+    if (field !== fields.password)
       currentErrors[key] = "Passwords do not match.";
 
     key = "DateOfBirth";
@@ -85,7 +84,14 @@ export default function SignUp(props) {
     
     key = "email";
     field = fields[key];
-    if (field.length === 0) currentErrors[key] = "Email is required.";
+    if (field.length === 0) {
+      currentErrors[key] = "Email is required.";
+    } else {
+      const isUnique = await checkEmailUnique(field);
+      if (!isUnique) {
+        currentErrors[key] = "Email is already registered.";
+      }
+    }
 
     setErrors(currentErrors);
 
