@@ -14,5 +14,6 @@ router.get("/login", controller.login);
 // Create a new user.
 router.post("/", controller.create);
 router.get("/findBy", controller.findByEmail);
-
+// Add this route
+router.get("/check-email", controller.checkEmailUnique);
 module.exports = router;

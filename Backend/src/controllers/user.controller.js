@@ -76,3 +76,22 @@ exports.create = async (req, res) => {
 };
 
 
+// Check if email is unique
+exports.checkEmailUnique = async (req, res) => {
+  try {
+    const { email } = req.query;
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required' });
+    }
+
+    const user = await db.user.findOne({ where: { email } });
+    if (user) {
+      res.json({ isUnique: false });
+    } else {
+      res.json({ isUnique: true });
+    }
+  } catch (error) {
+    console.error('Error checking email uniqueness:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
