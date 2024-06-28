@@ -10,3 +10,7 @@ Click here to view Website: href
  - All user information is stored in the backend
  - All product information and reviews are also stored backend
  - 
+### HOW TO RUN:
+  Frontend: 
+  <a href = "http://WalidF123.github.io/FullStack-Site/">"Click here to go my site"</a>
+  Backend:
