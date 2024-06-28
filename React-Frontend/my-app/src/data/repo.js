@@ -1,7 +1,9 @@
 import axios from "axios";
 
 // --- Constants ----------------------------------------------------------------------------------
-const API_HOST = "http://localhost:4000";
+//const API_HOST = "http://localhost:4000";
+const API_HOST = "https://backend-soil-2.onrender.com";
+
 const USER_KEY = "user";
 
 // --- User ---------------------------------------------------------------------------------------
