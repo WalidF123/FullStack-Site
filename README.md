@@ -12,5 +12,5 @@ Click here to view Website: href
  - 
 ### HOW TO RUN:
   Frontend: 
-  <a href = "ttp://WalidF123.github.io/FullStack-Site/">"Click here to go my site"</a>
+  <a href = "http://WalidF123.github.io/FullStack-Site/">"Click here to go my site"</a>
   Backend:
