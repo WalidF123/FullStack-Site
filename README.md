@@ -11,5 +11,18 @@ Click here to view Website: href
  - All product information and reviews are also stored backend
  - 
 ### HOW TO RUN:
-  Frontend: 
-  Backend:
+<a href = "http://WalidF123.github.io/FullStack-Site">"Click here to go to my site"</a>
+
+# OPERATION:
+BACKEND:
+ - Is deployed on render so can handle any calls to the API
+
+FRONTEND:
+- The react app is hosted on github pages
+
+# Helpful Information
+- In long periods of inactivity render spinds down the backend deployment so some calls to the API may take up to a minute
+ - So for example when trying to add a product to the cart it may take a minute to add due to render.
+
+
+   
